@@ -49,4 +49,15 @@
       document.getElementById("sideMenu").style.width = "0px";
     }
   }
+  
+  function menuBtnClick(){
+    document.getElementById("sideMenu").style.width = "0";
+    //document.getElementById("menuBtnIcon").classList.remove("fa-times");
+    //document.getElementById("menuBtnIcon").classList.add("fa-bars");
+    document.getElementById("menuBtnIcon").classList.replace("fa-times", "fa-bars");
+    document.getElementById(currentPage).style.display = "none";
+    document.getElementById(btnIdsToDivIds[this.id]).style.display = "block";
+    document.getElementById("topBarTitle").innerHTML = btnIdsToPageTitles[this.id];
+    currentPage = btnIdsToDivIds[this.id];
+  }
 </script>
