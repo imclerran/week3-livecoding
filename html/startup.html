@@ -3,14 +3,15 @@
 //the global state variables, and (c) transitioning to the login page
   //Initialize touch-friendly tooltips
   //initializeTooltips();
-  var currentPage = "feedDiv";
+  var currentPage = "loginDiv";
   var btnIdsToDivIds = {
     "feedBtn" : "feedDiv",
     "coursesBtn" : "coursesDiv",
     "roundsBtn" : "roundsDiv",
     "aboutBtn" : "aboutModal",
     "settingsBtn" : "settingsDiv",
-    "profileBtn" : "profileDiv"
+    "profileBtn" : "profileDiv",
+    "signOutBtn" : "loginDiv"
   };
   //Declare Initialize global variables
   var btnIdsToPageTitles = {
@@ -19,22 +20,31 @@
     "roundsBtn" : "Rounds",
     "profileBtn" : "Profiles",
     "settingsBtn" : "Settings",
-    "aboutBtn" : "About"
+    "aboutBtn" : "About",
+    "signOutBtn" : "SpeedScore TRACK"
   };
 
+  //Add the event listeners for the menu buttons
   document.getElementById("feedBtn").addEventListener("click", menuBtnClick);
   document.getElementById("coursesBtn").addEventListener("click", menuBtnClick);
   document.getElementById("roundsBtn").addEventListener("click", menuBtnClick);
   document.getElementById("profileBtn").addEventListener("click", menuBtnClick);
   document.getElementById("settingsBtn").addEventListener("click", menuBtnClick);
-  document.getElementById("aboutBtn").addEventListener("click", menuBtnClick);
+  document.getElementById("signOutBtn").addEventListener("click", menuBtnClick);
+  document.getElementById("aboutBtn").addEventListener("click", aboutBtnClick);
+  //close button on about box should close the about box
+  document.getElementById("close").addEventListener("click",function() { 
+    document.getElementById("aboutModal").style.display = "none";
+  });
 
+  //Hide all pages except for the the login page
+  document.getElementById("feedDiv").style.display = "none";
   document.getElementById("coursesDiv").style.display = "none";
   document.getElementById("roundsDiv").style.display = "none";
   document.getElementById("profileDiv").style.display = "none";
   document.getElementById("settingsDiv").style.display = "none";
-  document.getElementById("loginDiv").style.display = "none";
-  
+
+  //Disable the side menu when login page is visible.
   //Show login page
 
   </script>
