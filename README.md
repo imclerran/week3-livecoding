@@ -1,2 +1,2 @@
-# 1-21-livecoding
-The repo developed in class on 1-21-2019
+# week3-livecoding
+The repo developed during the third week of class.
