@@ -3,7 +3,7 @@
 //the global state variables, and (c) transitioning to the login page
   //Initialize touch-friendly tooltips
   //initializeTooltips();
-  var currentPage = "feedDiv";
+  var currentPage = "loginDiv";
   var btnIdsToDivIds = {
     "feedBtn" : "feedDiv",
     "coursesBtn" : "coursesDiv",
@@ -34,7 +34,11 @@
   document.getElementById("profileDiv").style.display = "none";
   document.getElementById("settingsDiv").style.display = "none";
   document.getElementById("loginDiv").style.display = "none";
-  
+  document.getElementById("feedDiv").style.display = "none";
+
+  document.getElementById(currentPage).style.display = "block";
+
   //Show login page
+  document.getElementById("menuBtn").disabled = true;
 
   </script>

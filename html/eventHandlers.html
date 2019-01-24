@@ -4,8 +4,8 @@
   /////////////////////////////
 
   /* bindListenerToClassName -- Given a (CSS) class name, a function, and a listener type (e.g., "click"),
-  this function iterates through all elements with the class, binding the event listener function to 
-  the appropriate listener type. 
+  this function iterates through all elements with the class, binding the event listener function to
+  the appropriate listener type.
   This is a utility function that allows us to bind the same function to all elements of a class. */
   function bindListenerToClassName(className, func, listenerType) {
     var classes = document.getElementsByClassName(className);
@@ -14,8 +14,8 @@
     }
   }
 
-  /* sideMenuItemClick: This function does the side menu housekeeping in cases where the item clicked 
-     (of class sideMenuItem) is actually a redirect to another page.  
+  /* sideMenuItemClick: This function does the side menu housekeeping in cases where the item clicked
+     (of class sideMenuItem) is actually a redirect to another page.
   */
   var sideMenuItemClick = function () {
     document.getElementById("sideMenu").style.width = "0";
@@ -31,7 +31,7 @@
   //close the menu, toggle the menu state, and re-enable all buttons/input fields on the page.
 
   //menuBtn click: When the top-left side menu button is clicked, we need to act based on which menu is
-  //presently displayed -- hamburger or left arrow. 
+  //presently displayed -- hamburger or left arrow.
   document.getElementById("menuBtn").onclick = function (e) {
     if (document.getElementById("menuBtnIcon").classList.contains("fa-bars")) {
       document.getElementById("sideMenu").style.width = "250px";
@@ -40,7 +40,7 @@
       e.stopPropagation();
     }
   }
-  //modeBtnClick: Function that can be bound to mode button click event.  
+  //modeBtnClick: Function that can be bound to mode button click event.
   document.onclick = function () {
     //menu must be open
     if (document.getElementById("sideMenu").style.width === "250px") {
@@ -49,15 +49,32 @@
       document.getElementById("sideMenu").style.width = "0px";
     }
   }
-  
+
   function menuBtnClick(){
     document.getElementById("sideMenu").style.width = "0";
-    //document.getElementById("menuBtnIcon").classList.remove("fa-times");
-    //document.getElementById("menuBtnIcon").classList.add("fa-bars");
     document.getElementById("menuBtnIcon").classList.replace("fa-times", "fa-bars");
     document.getElementById(currentPage).style.display = "none";
     document.getElementById(btnIdsToDivIds[this.id]).style.display = "block";
     document.getElementById("topBarTitle").innerHTML = btnIdsToPageTitles[this.id];
     currentPage = btnIdsToDivIds[this.id];
   }
+
+  // hitting return triggers login function
+  document.onkeypress = function(e) {
+    if(e.key === "Enter") {
+      e.preventDefault(); // prevent the form from submitting on return key press
+      document.getElementById("SSloginBtn").click();
+    }
+  }
+
+  document.getElementById("SSloginBtn").addEventListener("click", function() {
+    document.getElementById("loginSpinner").classList.add("fas", "fa-spinner", "fa-spin");
+    setTimeout(function(){
+      document.getElementById("loginSpinner").classList.remove("fas", "fa-spinner", "fa-spin");
+      document.getElementById("loginDiv").style.display="none";
+      document.getElementById("feedDiv").style.display="block";
+      document.getElementById("menuBtn").disabled = false;
+    }, 1000); // 1 seconds
+  });
+
 </script>
